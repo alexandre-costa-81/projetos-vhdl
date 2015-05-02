@@ -1,0 +1,19 @@
+|multiplicador
+operador_a[0] => ~NO_FANOUT~
+operador_a[1] => ~NO_FANOUT~
+operador_a[2] => ~NO_FANOUT~
+operador_a[3] => ~NO_FANOUT~
+operador_b[0] => ~NO_FANOUT~
+operador_b[1] => ~NO_FANOUT~
+operador_b[2] => ~NO_FANOUT~
+operador_b[3] => ~NO_FANOUT~
+resultado[0] <= comb.DB_MAX_OUTPUT_PORT_TYPE
+resultado[1] <= resultado[1].DB_MAX_OUTPUT_PORT_TYPE
+resultado[2] <= resultado[2].DB_MAX_OUTPUT_PORT_TYPE
+resultado[3] <= resultado[3].DB_MAX_OUTPUT_PORT_TYPE
+resultado[4] <= resultado[4].DB_MAX_OUTPUT_PORT_TYPE
+resultado[5] <= resultado[5].DB_MAX_OUTPUT_PORT_TYPE
+resultado[6] <= resultado[6].DB_MAX_OUTPUT_PORT_TYPE
+resultado[7] <= resultado[7].DB_MAX_OUTPUT_PORT_TYPE
+
+
