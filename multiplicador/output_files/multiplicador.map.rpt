@@ -1,6 +1,6 @@
 Analysis & Synthesis report for multiplicador
-Sat May  2 15:50:30 2015
-Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Sun May 03 02:12:28 2015
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
 ---------------------
@@ -13,9 +13,11 @@ Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Elapsed Time Per Partition
- 10. Analysis & Synthesis Messages
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Elapsed Time Per Partition
+ 12. Analysis & Synthesis Messages
 
 
 
@@ -41,8 +43,8 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat May  2 15:50:30 2015           ;
-; Quartus II 32-bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Analysis & Synthesis Status        ; Successful - Sun May 03 02:12:28 2015           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; multiplicador                                   ;
 ; Top-level Entity Name              ; multiplicador                                   ;
 ; Family                             ; Cyclone II                                      ;
@@ -149,18 +151,23 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 2      ;
+; Number detected on machine ; 4      ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                             ;
-+----------------------------------+-----------------+-----------------+-------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                      ; Library ;
-+----------------------------------+-----------------+-----------------+-------------------------------------------------------------------+---------+
-; multiplicador.vhd                ; yes             ; User VHDL File  ; /home/alexandre/git/projetos-vhdl/multiplicador/multiplicador.vhd ;         ;
-+----------------------------------+-----------------+-----------------+-------------------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                               ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                        ; Library ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------+---------+
+; multiplicador.vhd                ; yes             ; User VHDL File  ; C:/Users/Alexandre/Documents/GitHub/projetos-vhdl/multiplicador/multiplicador.vhd   ;         ;
+; somador.vhd                      ; yes             ; User VHDL File  ; C:/Users/Alexandre/Documents/GitHub/projetos-vhdl/multiplicador/somador.vhd         ;         ;
+; md.vhd                           ; yes             ; User VHDL File  ; C:/Users/Alexandre/Documents/GitHub/projetos-vhdl/multiplicador/md.vhd              ;         ;
+; multplexador2x1.vhd              ; yes             ; User VHDL File  ; C:/Users/Alexandre/Documents/GitHub/projetos-vhdl/multiplicador/multplexador2x1.vhd ;         ;
+; mr.vhd                           ; yes             ; User VHDL File  ; C:/Users/Alexandre/Documents/GitHub/projetos-vhdl/multiplicador/mr.vhd              ;         ;
+; pr.vhd                           ; yes             ; User VHDL File  ; C:/Users/Alexandre/Documents/GitHub/projetos-vhdl/multiplicador/pr.vhd              ;         ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -198,6 +205,31 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; pr:pr_map|d_tmp[7]                     ; Stuck at GND due to stuck port data_in ;
+; pr:pr_map|d_tmp[0..6]                  ; Stuck at GND due to stuck port clock   ;
+; mr:mr_map|d_tmp[0..3]                  ; Stuck at GND due to stuck port clock   ;
+; md:md_map|d_tmp[0..3]                  ; Stuck at GND due to stuck port clock   ;
+; Total Number of Removed Registers = 16 ;                                        ;
++----------------------------------------+----------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                      ;
++--------------------+---------------------------+---------------------------------------------------------------------------------+
+; Register name      ; Reason for Removal        ; Registers Removed due to This Register                                          ;
++--------------------+---------------------------+---------------------------------------------------------------------------------+
+; pr:pr_map|d_tmp[7] ; Stuck at GND              ; pr:pr_map|d_tmp[6], pr:pr_map|d_tmp[5], pr:pr_map|d_tmp[4], pr:pr_map|d_tmp[3], ;
+;                    ; due to stuck port data_in ; pr:pr_map|d_tmp[2], pr:pr_map|d_tmp[1], pr:pr_map|d_tmp[0]                      ;
+; mr:mr_map|d_tmp[3] ; Stuck at GND              ; mr:mr_map|d_tmp[2], mr:mr_map|d_tmp[1], mr:mr_map|d_tmp[0]                      ;
+;                    ; due to stuck port clock   ;                                                                                 ;
++--------------------+---------------------------+---------------------------------------------------------------------------------+
+
+
 +------------------------------------------------------+
 ; General Register Statistics                          ;
 +----------------------------------------------+-------+
@@ -226,43 +258,71 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus II 32-bit Analysis & Synthesis
+Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sat May  2 15:50:25 2015
+    Info: Processing started: Sun May 03 02:12:26 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off multiplicador -c multiplicador
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file multiplicador.vhd
-    Info (12022): Found design unit 1: multiplicador-arc
+    Info (12022): Found design unit 1: multiplicador-arq
     Info (12023): Found entity 1: multiplicador
+Info (12021): Found 2 design units, including 1 entities, in source file multiplicar.vhdl
+    Info (12022): Found design unit 1: multiplicar-arq
+    Info (12023): Found entity 1: multiplicar
+Info (12021): Found 2 design units, including 1 entities, in source file somador.vhd
+    Info (12022): Found design unit 1: somador-arq
+    Info (12023): Found entity 1: somador
+Info (12021): Found 2 design units, including 1 entities, in source file md.vhd
+    Info (12022): Found design unit 1: md-behavior
+    Info (12023): Found entity 1: md
+Info (12021): Found 2 design units, including 1 entities, in source file multplexador2x1.vhd
+    Info (12022): Found design unit 1: multplexador2x1-behavioral
+    Info (12023): Found entity 1: multplexador2x1
+Info (12021): Found 2 design units, including 1 entities, in source file mr.vhd
+    Info (12022): Found design unit 1: mr-behavior
+    Info (12023): Found entity 1: mr
+Info (12021): Found 2 design units, including 1 entities, in source file pr.vhd
+    Info (12022): Found design unit 1: pr-behavior
+    Info (12023): Found entity 1: pr
 Info (12127): Elaborating entity "multiplicador" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at multiplicador.vhd(9): used implicit default value for signal "resultado" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at multiplicador.vhd(15): used implicit default value for signal "controle_carga_md" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at multiplicador.vhd(15): used implicit default value for signal "controle_carga_mr" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at multiplicador.vhd(15): used implicit default value for signal "controle_desloca_mr" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at multiplicador.vhd(15): used implicit default value for signal "controle_limpa_pr" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at multiplicador.vhd(15): used implicit default value for signal "controle_desloca_pr" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "md" for hierarchy "md:md_map"
+Info (12128): Elaborating entity "multplexador2x1" for hierarchy "multplexador2x1:mux"
+Info (12128): Elaborating entity "mr" for hierarchy "mr:mr_map"
+Warning (10492): VHDL Process Statement warning at mr.vhd(18): signal "d" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "somador" for hierarchy "somador:somar"
+Info (12128): Elaborating entity "pr" for hierarchy "pr:pr_map"
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "resultado[0]" is stuck at GND
-    Warning (13410): Pin "resultado[1]" is stuck at GND
-    Warning (13410): Pin "resultado[2]" is stuck at GND
-    Warning (13410): Pin "resultado[3]" is stuck at GND
-    Warning (13410): Pin "resultado[4]" is stuck at GND
-    Warning (13410): Pin "resultado[5]" is stuck at GND
-    Warning (13410): Pin "resultado[6]" is stuck at GND
-    Warning (13410): Pin "resultado[7]" is stuck at GND
+    Warning (13410): Pin "reg_pr[0]" is stuck at GND
+    Warning (13410): Pin "reg_pr[1]" is stuck at GND
+    Warning (13410): Pin "reg_pr[2]" is stuck at GND
+    Warning (13410): Pin "reg_pr[3]" is stuck at GND
+    Warning (13410): Pin "reg_pr[4]" is stuck at GND
+    Warning (13410): Pin "reg_pr[5]" is stuck at GND
+    Warning (13410): Pin "reg_pr[6]" is stuck at GND
+    Warning (13410): Pin "reg_pr[7]" is stuck at GND
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 8 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "operador_a[0]"
-    Warning (15610): No output dependent on input pin "operador_a[1]"
-    Warning (15610): No output dependent on input pin "operador_a[2]"
-    Warning (15610): No output dependent on input pin "operador_a[3]"
-    Warning (15610): No output dependent on input pin "operador_b[0]"
-    Warning (15610): No output dependent on input pin "operador_b[1]"
-    Warning (15610): No output dependent on input pin "operador_b[2]"
-    Warning (15610): No output dependent on input pin "operador_b[3]"
+    Warning (15610): No output dependent on input pin "reg_md[0]"
+    Warning (15610): No output dependent on input pin "reg_md[1]"
+    Warning (15610): No output dependent on input pin "reg_md[2]"
+    Warning (15610): No output dependent on input pin "reg_md[3]"
+    Warning (15610): No output dependent on input pin "reg_mr[0]"
+    Warning (15610): No output dependent on input pin "reg_mr[1]"
+    Warning (15610): No output dependent on input pin "reg_mr[2]"
+    Warning (15610): No output dependent on input pin "reg_mr[3]"
 Info (21057): Implemented 16 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 8 input pins
     Info (21059): Implemented 8 output pins
-Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 20 warnings
-    Info: Peak virtual memory: 372 megabytes
-    Info: Processing ended: Sat May  2 15:50:30 2015
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:04
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 25 warnings
+    Info: Peak virtual memory: 488 megabytes
+    Info: Processing ended: Sun May 03 02:12:28 2015
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
 
 

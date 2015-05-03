@@ -24,16 +24,16 @@
 (DELAYFILE
   (SDFVERSION "2.1")
   (DESIGN "multiplicador")
-  (DATE "05/02/2015 15:51:16")
+  (DATE "05/03/2015 02:12:41")
   (VENDOR "Altera")
-  (PROGRAM "Quartus II 32-bit")
+  (PROGRAM "Quartus II 64-Bit")
   (VERSION "Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition")
   (DIVIDER .)
   (TIMESCALE 1 ps)
 
   (CELL
     (CELLTYPE "cycloneii_asynch_io")
-    (INSTANCE \\resultado\[0\]\~I\\.asynch_inst)
+    (INSTANCE \\reg_pr\[0\]\~I\\.asynch_inst)
     (DELAY
       (ABSOLUTE
         (IOPATH datain padio (2652:2652:2652) (2652:2652:2652))
@@ -42,7 +42,7 @@
   )
   (CELL
     (CELLTYPE "cycloneii_asynch_io")
-    (INSTANCE \\resultado\[1\]\~I\\.asynch_inst)
+    (INSTANCE \\reg_pr\[1\]\~I\\.asynch_inst)
     (DELAY
       (ABSOLUTE
         (IOPATH datain padio (2612:2612:2612) (2612:2612:2612))
@@ -51,7 +51,7 @@
   )
   (CELL
     (CELLTYPE "cycloneii_asynch_io")
-    (INSTANCE \\resultado\[2\]\~I\\.asynch_inst)
+    (INSTANCE \\reg_pr\[2\]\~I\\.asynch_inst)
     (DELAY
       (ABSOLUTE
         (IOPATH datain padio (2788:2788:2788) (2788:2788:2788))
@@ -60,7 +60,7 @@
   )
   (CELL
     (CELLTYPE "cycloneii_asynch_io")
-    (INSTANCE \\resultado\[3\]\~I\\.asynch_inst)
+    (INSTANCE \\reg_pr\[3\]\~I\\.asynch_inst)
     (DELAY
       (ABSOLUTE
         (IOPATH datain padio (2632:2632:2632) (2632:2632:2632))
@@ -69,7 +69,7 @@
   )
   (CELL
     (CELLTYPE "cycloneii_asynch_io")
-    (INSTANCE \\resultado\[4\]\~I\\.asynch_inst)
+    (INSTANCE \\reg_pr\[4\]\~I\\.asynch_inst)
     (DELAY
       (ABSOLUTE
         (IOPATH datain padio (2788:2788:2788) (2788:2788:2788))
@@ -78,7 +78,7 @@
   )
   (CELL
     (CELLTYPE "cycloneii_asynch_io")
-    (INSTANCE \\resultado\[5\]\~I\\.asynch_inst)
+    (INSTANCE \\reg_pr\[5\]\~I\\.asynch_inst)
     (DELAY
       (ABSOLUTE
         (IOPATH datain padio (2808:2808:2808) (2808:2808:2808))
@@ -87,7 +87,7 @@
   )
   (CELL
     (CELLTYPE "cycloneii_asynch_io")
-    (INSTANCE \\resultado\[6\]\~I\\.asynch_inst)
+    (INSTANCE \\reg_pr\[6\]\~I\\.asynch_inst)
     (DELAY
       (ABSOLUTE
         (IOPATH datain padio (2798:2798:2798) (2798:2798:2798))
@@ -96,7 +96,7 @@
   )
   (CELL
     (CELLTYPE "cycloneii_asynch_io")
-    (INSTANCE \\resultado\[7\]\~I\\.asynch_inst)
+    (INSTANCE \\reg_pr\[7\]\~I\\.asynch_inst)
     (DELAY
       (ABSOLUTE
         (IOPATH datain padio (2798:2798:2798) (2798:2798:2798))

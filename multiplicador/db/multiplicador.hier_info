@@ -1,19 +1,117 @@
 |multiplicador
-operador_a[0] => ~NO_FANOUT~
-operador_a[1] => ~NO_FANOUT~
-operador_a[2] => ~NO_FANOUT~
-operador_a[3] => ~NO_FANOUT~
-operador_b[0] => ~NO_FANOUT~
-operador_b[1] => ~NO_FANOUT~
-operador_b[2] => ~NO_FANOUT~
-operador_b[3] => ~NO_FANOUT~
-resultado[0] <= comb.DB_MAX_OUTPUT_PORT_TYPE
-resultado[1] <= resultado[1].DB_MAX_OUTPUT_PORT_TYPE
-resultado[2] <= resultado[2].DB_MAX_OUTPUT_PORT_TYPE
-resultado[3] <= resultado[3].DB_MAX_OUTPUT_PORT_TYPE
-resultado[4] <= resultado[4].DB_MAX_OUTPUT_PORT_TYPE
-resultado[5] <= resultado[5].DB_MAX_OUTPUT_PORT_TYPE
-resultado[6] <= resultado[6].DB_MAX_OUTPUT_PORT_TYPE
-resultado[7] <= resultado[7].DB_MAX_OUTPUT_PORT_TYPE
+reg_md[0] => md:md_map.d[0]
+reg_md[1] => md:md_map.d[1]
+reg_md[2] => md:md_map.d[2]
+reg_md[3] => md:md_map.d[3]
+reg_mr[0] => mr:mr_map.d[0]
+reg_mr[1] => mr:mr_map.d[1]
+reg_mr[2] => mr:mr_map.d[2]
+reg_mr[3] => mr:mr_map.d[3]
+reg_pr[0] <= pr:pr_map.q[0]
+reg_pr[1] <= pr:pr_map.q[1]
+reg_pr[2] <= pr:pr_map.q[2]
+reg_pr[3] <= pr:pr_map.q[3]
+reg_pr[4] <= pr:pr_map.q[4]
+reg_pr[5] <= pr:pr_map.q[5]
+reg_pr[6] <= pr:pr_map.q[6]
+reg_pr[7] <= pr:pr_map.q[7]
+
+
+|multiplicador|md:md_map
+d[0] => d_tmp[0].DATAIN
+d[1] => d_tmp[1].DATAIN
+d[2] => d_tmp[2].DATAIN
+d[3] => d_tmp[3].DATAIN
+carga => d_tmp[0].CLK
+carga => d_tmp[1].CLK
+carga => d_tmp[2].CLK
+carga => d_tmp[3].CLK
+q[0] <= d_tmp[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= d_tmp[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= d_tmp[2].DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= d_tmp[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplicador|multplexador2x1:mux
+sel => saida.OUTPUTSELECT
+sel => saida.OUTPUTSELECT
+sel => saida.OUTPUTSELECT
+sel => saida.OUTPUTSELECT
+entrada1[0] => saida.DATAA
+entrada1[1] => saida.DATAA
+entrada1[2] => saida.DATAA
+entrada1[3] => saida.DATAA
+saida[0] <= saida.DB_MAX_OUTPUT_PORT_TYPE
+saida[1] <= saida.DB_MAX_OUTPUT_PORT_TYPE
+saida[2] <= saida.DB_MAX_OUTPUT_PORT_TYPE
+saida[3] <= saida.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplicador|mr:mr_map
+d[0] => d_tmp[0].ADATA
+d[1] => d_tmp[1].ADATA
+d[2] => d_tmp[2].ADATA
+d[3] => d_tmp[3].ADATA
+carga => d_tmp[0].ALOAD
+carga => d_tmp[1].ALOAD
+carga => d_tmp[2].ALOAD
+carga => d_tmp[3].ALOAD
+desloca => d_tmp[0].CLK
+desloca => d_tmp[1].CLK
+desloca => d_tmp[2].CLK
+desloca => d_tmp[3].CLK
+q <= d_tmp[0].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplicador|somador:somar
+operando_a[0] => Add0.IN4
+operando_a[1] => Add0.IN3
+operando_a[2] => Add0.IN2
+operando_a[3] => Add0.IN1
+operando_b[0] => Add0.IN8
+operando_b[1] => Add0.IN7
+operando_b[2] => Add0.IN6
+operando_b[3] => Add0.IN5
+soma[0] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
+soma[1] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
+soma[2] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
+soma[3] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
+soma[4] <= <GND>
+
+
+|multiplicador|pr:pr_map
+d[0] => d_tmp[3].DATAIN
+d[1] => d_tmp[4].DATAIN
+d[2] => d_tmp[5].DATAIN
+d[3] => d_tmp[6].DATAIN
+d[4] => d_tmp[7].DATAIN
+limpa => d_tmp[0].ACLR
+limpa => d_tmp[1].ACLR
+limpa => d_tmp[2].ACLR
+limpa => d_tmp[3].ACLR
+limpa => d_tmp[4].ACLR
+limpa => d_tmp[5].ACLR
+limpa => d_tmp[6].ACLR
+limpa => d_tmp[7].ACLR
+desloca => d_tmp[0].CLK
+desloca => d_tmp[1].CLK
+desloca => d_tmp[2].CLK
+desloca => d_tmp[3].CLK
+desloca => d_tmp[4].CLK
+desloca => d_tmp[5].CLK
+desloca => d_tmp[6].CLK
+desloca => d_tmp[7].CLK
+q_somador[0] <= d_tmp[4].DB_MAX_OUTPUT_PORT_TYPE
+q_somador[1] <= d_tmp[5].DB_MAX_OUTPUT_PORT_TYPE
+q_somador[2] <= d_tmp[6].DB_MAX_OUTPUT_PORT_TYPE
+q_somador[3] <= d_tmp[7].DB_MAX_OUTPUT_PORT_TYPE
+q[0] <= d_tmp[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= d_tmp[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= d_tmp[2].DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= d_tmp[3].DB_MAX_OUTPUT_PORT_TYPE
+q[4] <= d_tmp[4].DB_MAX_OUTPUT_PORT_TYPE
+q[5] <= d_tmp[5].DB_MAX_OUTPUT_PORT_TYPE
+q[6] <= d_tmp[6].DB_MAX_OUTPUT_PORT_TYPE
+q[7] <= d_tmp[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
