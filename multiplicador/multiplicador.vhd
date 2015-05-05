@@ -5,6 +5,10 @@ use IEEE.std_logic_unsigned.all;
 
 entity multiplicador is
 	port (
+		clk: in std_logic;
+		reset: in std_logic;
+		entrada: in std_logic;
+	
 		reg_md: in std_logic_vector(3 downto 0);
 		reg_mr: in std_logic_vector(3 downto 0);
 		reg_pr: out std_logic_vector(7 downto 0)
@@ -57,10 +61,27 @@ architecture arq of multiplicador is
 		);
 	end component;
 
+component controle is
+	port(
+		clk       : in std_logic;
+		reset     : in std_logic;
+		entrada   : in std_logic;
+
+		limpa_pr: out std_logic;
+
+		carga_md: out std_logic;
+		carga_mr: out std_logic;
+
+		desloca_mr: out std_logic;
+		desloca_pr: out std_logic
+	);
+end component;
+	
 begin
-	md_map : md port map(d => reg_md, carga => controle_carga_md, q => md_mux);
-	mux    : multplexador2x1 port map (sel => mr_mux, entrada1 => md_mux, saida => mux_somador);
-	mr_map : mr port map(d => reg_mr, carga => controle_carga_mr, desloca => controle_desloca_mr, q => mr_mux);
-	somar  : somador port map(operando_a => mux_somador, operando_b => pr_somador, soma => somador_pr);
-	pr_map : pr port map(d => somador_pr, limpa => controle_limpa_pr, desloca => controle_desloca_pr, q_somador => pr_somador, q => reg_pr);
+	md_map      : md port map(d => reg_md, carga => controle_carga_md, q => md_mux);
+	mux         : multplexador2x1 port map (sel => mr_mux, entrada1 => md_mux, saida => mux_somador);
+	mr_map      : mr port map(d => reg_mr, carga => controle_carga_mr, desloca => controle_desloca_mr, q => mr_mux);
+	somar       : somador port map(operando_a => mux_somador, operando_b => pr_somador, soma => somador_pr);
+	pr_map      : pr port map(d => somador_pr, limpa => controle_limpa_pr, desloca => controle_desloca_pr, q_somador => pr_somador, q => reg_pr);
+	controle_map: controle port map(clk => clk, reset => reset, entrada => entrada, limpa_pr => controle_limpa_pr, carga_md => controle_carga_md, carga_mr => controle_carga_mr, desloca_mr => controle_desloca_mr, desloca_pr => controle_desloca_pr);
 end arq;

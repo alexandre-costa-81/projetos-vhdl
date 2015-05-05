@@ -1,5 +1,1 @@
-set tool_name "ModelSim-Altera (VHDL)"
-set corner_file_list {
-	{{"Slow Model"} {multiplicador.vho multiplicador_vhd.sdo}}
-	{{"Fast Model"} {multiplicador_fast.vho multiplicador_vhd_fast.sdo}}
-}
+set tool_name "ModelSim-Altera (Verilog)"

@@ -22,7 +22,7 @@ begin
 			d_tmp(2) <= d_tmp(3);
 			d_tmp(3) <= '0';
 		end if;
+		
+		q <= d_tmp(0);
 	end process;
-	
-	q <= d_tmp(0);
 end behavior;

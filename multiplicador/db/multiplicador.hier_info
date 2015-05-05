@@ -1,4 +1,7 @@
 |multiplicador
+clk => controle:controle_map.clk
+reset => controle:controle_map.reset
+entrada => controle:controle_map.entrada
 reg_md[0] => md:md_map.d[0]
 reg_md[1] => md:md_map.d[1]
 reg_md[2] => md:md_map.d[2]
@@ -33,18 +36,18 @@ q[3] <= d_tmp[3].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |multiplicador|multplexador2x1:mux
-sel => saida.OUTPUTSELECT
-sel => saida.OUTPUTSELECT
-sel => saida.OUTPUTSELECT
-sel => saida.OUTPUTSELECT
-entrada1[0] => saida.DATAA
-entrada1[1] => saida.DATAA
-entrada1[2] => saida.DATAA
-entrada1[3] => saida.DATAA
-saida[0] <= saida.DB_MAX_OUTPUT_PORT_TYPE
-saida[1] <= saida.DB_MAX_OUTPUT_PORT_TYPE
-saida[2] <= saida.DB_MAX_OUTPUT_PORT_TYPE
-saida[3] <= saida.DB_MAX_OUTPUT_PORT_TYPE
+sel => saida~0.OUTPUTSELECT
+sel => saida~1.OUTPUTSELECT
+sel => saida~2.OUTPUTSELECT
+sel => saida~3.OUTPUTSELECT
+entrada1[0] => saida~3.DATAA
+entrada1[1] => saida~2.DATAA
+entrada1[2] => saida~1.DATAA
+entrada1[3] => saida~0.DATAA
+saida[0] <= saida~3.DB_MAX_OUTPUT_PORT_TYPE
+saida[1] <= saida~2.DB_MAX_OUTPUT_PORT_TYPE
+saida[2] <= saida~1.DB_MAX_OUTPUT_PORT_TYPE
+saida[3] <= saida~0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |multiplicador|mr:mr_map
@@ -113,5 +116,24 @@ q[4] <= d_tmp[4].DB_MAX_OUTPUT_PORT_TYPE
 q[5] <= d_tmp[5].DB_MAX_OUTPUT_PORT_TYPE
 q[6] <= d_tmp[6].DB_MAX_OUTPUT_PORT_TYPE
 q[7] <= d_tmp[7].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplicador|controle:controle_map
+clk => estado_atual~5.DATAIN
+reset => estado_atual~9.DATAIN
+entrada => limpa_pr_tmp~0.OUTPUTSELECT
+entrada => carga_md_tmp~0.OUTPUTSELECT
+entrada => carga_mr_tmp~0.OUTPUTSELECT
+entrada => desloca_mr_tmp~0.OUTPUTSELECT
+entrada => desloca_pr_tmp~0.OUTPUTSELECT
+entrada => Selector6.IN3
+entrada => Selector9.IN4
+entrada => Selector11.IN4
+entrada => Selector5.IN2
+limpa_pr <= limpa_pr~0.DB_MAX_OUTPUT_PORT_TYPE
+carga_md <= carga_md~0.DB_MAX_OUTPUT_PORT_TYPE
+carga_mr <= carga_mr~0.DB_MAX_OUTPUT_PORT_TYPE
+desloca_mr <= desloca_mr~0.DB_MAX_OUTPUT_PORT_TYPE
+desloca_pr <= desloca_pr~0.DB_MAX_OUTPUT_PORT_TYPE
 
 
