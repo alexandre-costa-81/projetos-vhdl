@@ -67,19 +67,27 @@ q <= d_tmp[0].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |multiplicador|somador:somar
-operando_a[0] => Add0.IN4
-operando_a[1] => Add0.IN3
-operando_a[2] => Add0.IN2
-operando_a[3] => Add0.IN1
-operando_b[0] => Add0.IN8
-operando_b[1] => Add0.IN7
-operando_b[2] => Add0.IN6
-operando_b[3] => Add0.IN5
-soma[0] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-soma[1] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-soma[2] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-soma[3] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
-soma[4] <= <GND>
+operando_a[0] => s~0.IN0
+operando_a[0] => c~0.IN0
+operando_a[1] => c~1.IN0
+operando_a[1] => c~2.IN0
+operando_a[2] => c~5.IN0
+operando_a[2] => c~6.IN0
+operando_a[3] => c~9.IN0
+operando_a[3] => c~10.IN0
+operando_b[0] => s~0.IN1
+operando_b[0] => c~0.IN1
+operando_b[1] => c~1.IN1
+operando_b[1] => c~2.IN1
+operando_b[2] => c~5.IN1
+operando_b[2] => c~6.IN1
+operando_b[3] => c~9.IN1
+operando_b[3] => c~10.IN1
+soma[0] <= s~0.DB_MAX_OUTPUT_PORT_TYPE
+soma[1] <= s~1.DB_MAX_OUTPUT_PORT_TYPE
+soma[2] <= s~2.DB_MAX_OUTPUT_PORT_TYPE
+soma[3] <= s~3.DB_MAX_OUTPUT_PORT_TYPE
+soma[4] <= c~12.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |multiplicador|pr:pr_map
